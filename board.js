@@ -12,7 +12,7 @@ let casillas = [[c1, c2, c3], [c4, c5, c6], [c7, c8, c9]]
 
 
 let board = [
-    ['x', 'o', 'x'], ['', 'x', 'x'], ['o', 'o', 'x']
+    ['', '', ''], ['', '', ''], ['', '', '']
 ]
 
 // establecer un valor a cada casilla basado en el valor del board
@@ -29,4 +29,30 @@ function establecer(casillas, board) {
     casillas[2][2].innerText = board[2][2];
 }
 
+
+let turno = 'O';
+// funcion que realiza a travez de un click el cambio del valor de la casilla, y revisa si la casilla esta vacia
+function interaction(casillas) {
+    let dato;
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            casillas[i][j].onclick = () => {
+                dato = casillas[i][j].textContent;
+               if (dato != '') {
+                    return;
+                }
+                casillas[i][j].innerText = turno;
+                if (turno == 'X') {
+                    turno = 'O'
+                } else {
+                    turno = 'X'
+                }
+            }
+        }
+    }
+}
+
 establecer(casillas, board);
+interaction(casillas)
+
+
